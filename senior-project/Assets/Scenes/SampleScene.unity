@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 515870596}
+  moveSpeed: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
