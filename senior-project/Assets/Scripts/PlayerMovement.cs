@@ -5,28 +5,42 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    private Rigidbody2D playerRigidbody;
-    private Vector3 velocity;
+    private Rigidbody2D myRigidBody;
+    private Vector3 change;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        myRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        velocity = Vector3.zero;
-        velocity.x = Input.GetAxisRaw("Horizontal");
-        velocity.y = Input.GetAxisRaw("Vertical");
-        if (velocity != Vector3.zero)
+        change = Vector3.zero;
+        change.x = Input.GetAxisRaw("Horizontal");
+        change.y = Input.GetAxisRaw("Vertical");
+        UpdateAnimAndMove();
+    }
+
+    void UpdateAnimAndMove()
+    {
+        if (change != Vector3.zero)
         {
             MoveCharacter();
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
         }
     }
 
     void MoveCharacter()
     {
-        playerRigidbody.MovePosition(transform.position + velocity * speed * Time.deltaTime);
+        myRigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
     }
 }
