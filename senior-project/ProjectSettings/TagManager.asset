@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - breakable
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -41,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Decor
     uniqueID: 1429815573
+    locked: 0
+  - name: Player
+    uniqueID: 2700363151
+    locked: 0
+  - name: Roof
+    uniqueID: 3984838247
     locked: 0
